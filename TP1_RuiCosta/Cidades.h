@@ -76,7 +76,7 @@ bool ExisteCidade(Cidades* h, int x);//X
 //assinaturas das funções dos caminhos
 
 //Cidades* AdicionarAdj(Cidades* listaCidades, AdjFile novo);//X/O
-Cidades* AdicionarAdj(Cidades* cidades, AdjFile novo);
+void AdicionarAdj(Cidades* cidades, AdjFile novo);
 Adj* LerListaAdj(Cidades* listaCidades, int x);//X
 
 int EliminarAdj(Cidades* listaCidades, char x, char y);//X

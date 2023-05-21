@@ -126,10 +126,10 @@ int main()
 	AdjFile a7 = { 1, 3, 50 };
 	AdjFile a1 = { 3, 4, 300 };
 
-	inicioca = AdicionarAdj(inicioca, a11);
-	//inicioca = AdicionarAdj(inicioca, a3);
-	//inicioca = AdicionarAdj(inicioca, a7);
-	//inicioca = AdicionarAdj(inicioca, a1);
+	AdicionarAdj(inicioca, a11);
+	AdicionarAdj(inicioca, a3);
+	AdicionarAdj(inicioca, a7);
+	AdicionarAdj(inicioca, a1);
 
 	MostraListaCidades(inicioca);
 	//GravaListaCidade(inicioca);

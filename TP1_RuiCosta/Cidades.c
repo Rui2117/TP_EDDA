@@ -166,40 +166,31 @@ int GravaListaCidade(Cidades* head)
     fclose(file);
 }
 
-Cidades* AdicionarAdj(Cidades* head, AdjFile novo)
+void AdicionarAdj(Cidades* head, AdjFile novo)
 {
     Adj* novaAdj = (Adj*)malloc(sizeof(Adj));
 
-    if (novaAdj == NULL)
-    {
-        return head;
-    }
-    Cidades* x = EncontrarCidade(head, novo.codOrigem);
-    Cidades* y = EncontrarCidade(head, novo.codDestino);
+    if (novaAdj == NULL) return;
 
-    novaAdj->codDestino = y->codCidade;
+    Cidades* cidade = EncontrarCidade(head, novo.codOrigem);
+
+    novaAdj->codDestino = novo.codDestino;
     novaAdj->peso = novo.peso;
     novaAdj->next = NULL;
 
-    Adj* adjancencia = x->conexoes;
-    if (x->conexoes == NULL) x->conexoes = novaAdj;
-    else
-    {
-        while (adjancencia)
-        {
-            if (adjancencia->codDestino == novaAdj->codDestino)
-            {
-                return head;
-            }
+    if (cidade->conexoes == NULL) cidade->conexoes = novaAdj;
+    else {
+        Adj* adjancencia = cidade->conexoes;
+        while (adjancencia->next != NULL) {
+            if (adjancencia->codDestino == novaAdj->codDestino) return;
             adjancencia = adjancencia->next;
         }
-        adjancencia = novaAdj;
+        if (adjancencia->codDestino == novaAdj->codDestino) return;
+        adjancencia->next = novaAdj;
     }
     
     AdjFile aux = { novo.codDestino, novo.codOrigem, novo.peso };
-    head = AdicionarAdj(head, aux);
-
-    return head;
+    AdicionarAdj(head, aux);
 }
 
 //Adj
