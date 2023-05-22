@@ -68,6 +68,27 @@ Cidades* LerListaCidade(Cidades* head)
     return head;
 }
 
+Cidades* LerAdjacencias(Cidades* head)
+{
+    //abrir o ficheiro
+    FILE* file;
+    file = fopen(binFileAdj, "rb");
+
+    //verificar o ficheiro
+    if (file == NULL)
+    {
+        return head;
+    }
+    AdjFile aux;
+    while (fread(&aux, sizeof(AdjFile), 1, file) != NULL)
+    {
+        AdicionarAdj(head, aux);
+    }
+    fclose(file);
+
+    return head;
+}
+
 Cidades* EncontrarCidade(Cidades* head, int x)
 {
     Cidades* aux = head;
@@ -142,7 +163,7 @@ int GravaListaCidade(Cidades* head)
         fwrite(&auxfile, sizeof(CidadeFile), 1, file);
 
         
-        /*if (aux->conexoes != NULL)
+        if (aux->conexoes != NULL)
         {
             Adj* auxA = aux->conexoes;
             AdjFile auxfileA;
@@ -153,16 +174,14 @@ int GravaListaCidade(Cidades* head)
                 auxfileA.codOrigem = aux->codCidade;
                 auxfileA.codDestino = aux->conexoes->codDestino;
                 auxfileA.peso = aux->conexoes->peso;
-                fwrite(&auxfileA, sizeof(AdjFile), 1, binFileAdj);
-                //fwrite(&auxfileA->codDestino, 1, sizeof(auxfileA->codDestino), binFileAdj);
-                //fwrite(&auxfileA->codDestino, 1, sizeof(auxfileA->peso), binFileAdj);
+                fwrite(&auxfileA, sizeof(AdjFile), 1, filea);
 
                 aux->conexoes = aux->conexoes->next;
             }
-        }*/
+        }
         aux = aux->proximo;
     }
-    //fclose(binFileAdj);
+    fclose(filea);
     fclose(file);
 }
 
@@ -178,7 +197,10 @@ void AdicionarAdj(Cidades* head, AdjFile novo)
     novaAdj->peso = novo.peso;
     novaAdj->next = NULL;
 
-    if (cidade->conexoes == NULL) cidade->conexoes = novaAdj;
+    if (cidade->conexoes == NULL)
+    {
+        cidade->conexoes = novaAdj;
+    }
     else {
         Adj* adjancencia = cidade->conexoes;
         while (adjancencia->next != NULL) {
@@ -188,7 +210,7 @@ void AdicionarAdj(Cidades* head, AdjFile novo)
         if (adjancencia->codDestino == novaAdj->codDestino) return;
         adjancencia->next = novaAdj;
     }
-    
+
     AdjFile aux = { novo.codDestino, novo.codOrigem, novo.peso };
     AdicionarAdj(head, aux);
 }

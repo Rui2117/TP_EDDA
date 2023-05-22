@@ -110,6 +110,7 @@ int main()
 	Cidades* inicioca = NULL;
 	
 	inicioca = LerListaCidade(inicioca);
+	inicioca = LerAdjacencias(inicioca);
 
 	Cidades guimaraes = { "Gumaraes", 1, NULL, NULL };
 	Cidades braga = { "Braga", 2, NULL, NULL };
@@ -126,13 +127,13 @@ int main()
 	AdjFile a7 = { 1, 3, 50 };
 	AdjFile a1 = { 3, 4, 300 };
 
-	AdicionarAdj(inicioca, a11);
-	AdicionarAdj(inicioca, a3);
-	AdicionarAdj(inicioca, a7);
-	AdicionarAdj(inicioca, a1);
+	//AdicionarAdj(inicioca, a11);
+	//AdicionarAdj(inicioca, a3);
+	//AdicionarAdj(inicioca, a7);
+	//AdicionarAdj(inicioca, a1);
 
 	MostraListaCidades(inicioca);
-	//GravaListaCidade(inicioca);
+	GravaListaCidade(inicioca);
 	//EliminaListCidade(&inicioca);
 	//MostraListaCidade(inicioca);
 }

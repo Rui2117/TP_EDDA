@@ -36,18 +36,6 @@ typedef struct AluguerFile
 	float custo;
 }AluguerFile;
 
- //typedef struct verticefile
- //{
-	//int cod;
-	//char cidade[n];
- //}verticefile;
- //
- //int saveGraph(Vertice* g, char* fileName)
- //{
-	//if(g== NULL) retur 0;
-	//FILE* fp;
-	//fp=fopen(fileName, "wb");
- //}
-
 //assinaturas de funções
 
+Aluguer* fazerAluguer(int cliente, int meio, int cidadeOrigem, int cidadeDestino, Aluguer* h);

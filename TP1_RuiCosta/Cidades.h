@@ -65,7 +65,7 @@ typedef struct CidadeFile
 Cidades* AdicionarCidade(Cidades* listaCidades, Cidades novo);//O
 Cidades* LerListaCidade(Cidades* listaCidades);//O
 Cidades* EliminarCidade(Cidades* listaCidades, int x);//X
-Cidades* EncontrarCidade(int x);//X
+Cidades* EncontrarCidade(Cidades* head, int x);//O
 
 void MostraListaCidades(Cidades* listaCidades);//O
 int GravaListaCidade(Cidades* listaCidades);//O
@@ -76,12 +76,10 @@ bool ExisteCidade(Cidades* h, int x);//X
 //assinaturas das funções dos caminhos
 
 //Cidades* AdicionarAdj(Cidades* listaCidades, AdjFile novo);//X/O
-void AdicionarAdj(Cidades* cidades, AdjFile novo);
-Adj* LerListaAdj(Cidades* listaCidades, int x);//X
+void AdicionarAdj(Cidades* cidades, AdjFile novo);//O
+Cidades* LerAdjacencias(Cidades* head);//O
 
 int EliminarAdj(Cidades* listaCidades, char x, char y);//X
-int GravaListaAdj(Adj* h);//X
-
 bool EliminaListaAdj(Cidades* listaCidades, char x);//X
 
 
