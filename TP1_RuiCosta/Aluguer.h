@@ -15,22 +15,23 @@
 #pragma once
 
 
-typedef struct Aluguer
+typedef struct Aluguer Aluguer;
+struct Aluguer
 {
 	int codAluguer;
 	int cliente;
-	int veiculo;
+	char veiculo[tMatricula];
 	int origem;
 	int destino;
 	float custo;
 	struct Aluguer* proximo;
-}Aluguer;
+};
  
 typedef struct AluguerFile
 {
 	int codAluguer;
 	int cliente;
-	int veiculo;
+	char veiculo[tMatricula];
 	int origem;
 	int destino;
 	float custo;
@@ -38,4 +39,4 @@ typedef struct AluguerFile
 
 //assinaturas de funções
 
-Aluguer* fazerAluguer(int cliente, int meio, int cidadeOrigem, int cidadeDestino, Aluguer* h);
+Aluguer* fazerAluguer(int cliente, int meio, int cidadeOrigem, int cidadeDestino, ListaClientes* hc, ListaME* hm, Cidades* hca, Aluguer* h);

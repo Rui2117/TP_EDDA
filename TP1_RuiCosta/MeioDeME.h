@@ -51,9 +51,11 @@ ListaME* AdicionarMeios(ListaME* listaMeios, MeioDeME veiculo);//O
 ListaME* LerListaM(ListaME* h);//O
 ListaME* EliminarMeio(ListaME* h, char x);//X
 ListaME* TrocaM(ListaME* x, ListaME* y);//O
-ListaME* ordenarMPorAutonomia(ListaME* head);//O
+ListaME* OrdenarMPorAutonomia(ListaME* head);//O
+ListaME* EncontrarMeio(ListaME* h, char x[]);//O
 
 void MostraListaM(ListaME* head);//O
+void VeiculosNumaLocalidde(ListaME* head, int cidade);//O
 int GravaListaM(ListaME* h);//O
 
 bool EliminaListaM(ListaME** h);//O

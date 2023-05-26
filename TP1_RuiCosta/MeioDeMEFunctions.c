@@ -61,6 +61,26 @@ ListaME* EliminarMeio(ListaME* h, char x)
 }
 
 //Mostra a lista 
+void VeiculosNumaLocalidde(ListaME* head, int x)
+{
+    ListaME* aux = head;
+
+    while (aux != NULL)
+    {
+        //enquanto que a lista tiver membros escreve os que tiveram a pedida
+        if (aux->meioDeME.localizacao == x)
+        {
+            printf("%s\n", aux->meioDeME.nome);
+            printf("%s\n", aux->meioDeME.matricula);
+            printf("%d\n", aux->meioDeME.localizacao);
+            printf("%d\n", aux->meioDeME.carga);
+            printf("%d\n", aux->meioDeME.autonomia);
+            printf("%d\n", aux->meioDeME.custo);
+        }
+        aux = aux->proximo;
+    }
+}
+
 void MostraListaM(ListaME* head)
 {
     ListaME* aux = head;
@@ -78,7 +98,7 @@ void MostraListaM(ListaME* head)
     }
 }
 
-ListaME* ordenarMPorAutonomia(ListaME* head) 
+ListaME* OrdenarMPorAutonomia(ListaME* head) 
 {
     if (head == NULL)
     {
@@ -107,6 +127,33 @@ ListaME* TrocaM(ListaME* x, ListaME* y)
     MeioDeME aux = x->meioDeME;
     x->meioDeME = y->meioDeME;
     y->meioDeME = aux;
+}
+
+ListaME* EncontrarMeio(ListaME* h, char x[])
+{
+    ListaME* aux = (ListaME*)malloc(sizeof(ListaME));
+    if (aux == NULL)
+    {
+        free(aux);
+        return NULL;
+    }
+    aux->proximo = h->proximo;
+    aux->meioDeME = h->meioDeME;
+
+    if (h == NULL)
+    {
+        return NULL;
+    }
+    while (aux)
+    {
+        if (strcmp(aux->meioDeME.matricula, x) == 0)
+        {
+            return aux;
+        }
+        aux = aux->proximo;
+    }
+
+    return false;
 }
 
 int GravaListaM(ListaME* h)

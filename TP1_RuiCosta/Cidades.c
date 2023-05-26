@@ -185,6 +185,35 @@ int GravaListaCidade(Cidades* head)
     fclose(file);
 }
 
+bool ExisteCidade(Cidades* h, char x[])
+{
+    Cidades* aux = (Cidades*)malloc(sizeof(Cidades));
+    if (aux == NULL)
+    {
+        free(aux);
+        return h;
+    }
+    aux->proximo = h->proximo;
+    aux->codCidade = h->codCidade;
+    aux->conexoes = h->conexoes;
+    strcpy(aux->nomeCidade, h->nomeCidade);
+
+    if (h == NULL)
+    {
+        return false;
+    }
+    while (aux)
+    {
+        if (strcmp(aux->nomeCidade, x) == 0)
+        {
+            return true;
+        }
+        aux = aux->proximo;
+    }
+
+    return false;
+}
+
 void AdicionarAdj(Cidades* head, AdjFile novo)
 {
     Adj* novaAdj = (Adj*)malloc(sizeof(Adj));

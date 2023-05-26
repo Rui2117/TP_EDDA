@@ -71,7 +71,7 @@ void MostraListaCidades(Cidades* listaCidades);//O
 int GravaListaCidade(Cidades* listaCidades);//O
 
 bool EliminaListaCidade(Cidades* listaCidades);//X
-bool ExisteCidade(Cidades* h, int x);//X
+bool ExisteCidade(Cidades* h, char x[]);//X
 
 //assinaturas das funções dos caminhos
 
